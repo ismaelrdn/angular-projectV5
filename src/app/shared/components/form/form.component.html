@@ -1,0 +1,82 @@
+<div class="form container">
+
+  <form *ngIf="carForm" [formGroup]="carForm" (submit)="handleCar()" class="form-control form row">
+    <div class="div-form input-group">
+      <input placeholder="Image URL" formControlName="image" />
+      <p 
+      *ngIf="
+      !carForm.get('image')?.valid
+      && carForm.get('image')?.touched
+      "
+      >Field requiered</p>
+    </div>
+    <div class="div-form input-group">
+      <input placeholder="model" formControlName="model" />
+      <p 
+      *ngIf="
+      !carForm.get('model')?.valid
+      && carForm.get('model')?.touched
+      "
+      >Field requiered</p>
+    </div>
+    <div class="div-form input-group">
+      <input placeholder="vehicle" formControlName="vehicle" />
+      <p 
+      *ngIf="
+      !carForm.get('vehicle')?.valid
+      && carForm.get('vehicle')?.touched
+      "
+      >Field requiered</p>
+    </div>
+    <div class="div-form input-group">
+      <input placeholder="manufacturer" formControlName="manufacturer" />
+      <p 
+      *ngIf="
+      !carForm.get('manufacturer')?.valid
+      && carForm.get('manufacturer')?.touched
+      "
+      >Field requiered</p>
+    </div>
+    <div class="div-form input-group">
+      <input placeholder="price" formControlName="price" />
+      <p 
+      *ngIf="
+      !carForm.get('price')?.valid
+      && carForm.get('price')?.touched
+      "
+      >Field requiered</p>
+    </div>
+
+    <div class="div-form input-group">        
+      <p>Type:</p>
+      <select formControlName="type">
+
+          <option>Wagon</option>
+          <option>Hatchback</option>
+          <option>Van</option>
+          <option>Sport</option>
+          <option>SuperSport</option>
+          <option>AllTerrain</option>
+
+      </select>
+    </div>
+    <div class="div-form input-group">
+      <p>Fuel:</p>
+      <select formControlName="fuel">
+
+          <option>Diesel</option>
+          <option>Gasoline</option>
+          <option>Hybrid</option>
+          <option>Electric</option>
+
+
+      </select>
+    </div>
+        <img [src]="imgSrc" class="form-img">
+    <button class="form-btn" type="submit"> {{isEditMode ? 'Modify' : 'Create' | uppercase}} </button>
+    <p *ngIf="hasFormError">The form has errors</p>
+    <p *ngIf="hasSuccess">{{isEditMode ? 'Car modified!!' : 'Car created!!'}}<a [routerLink]="['../car-list']">check it on the list</a></p>
+
+  </form>
+
+</div>

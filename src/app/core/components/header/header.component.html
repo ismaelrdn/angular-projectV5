@@ -1,0 +1,10 @@
+<div class="header display-1 navbar navbar-expand-lg navbar-light">
+    <div class="link nav-item">
+        <a 
+            *ngFor="let link of headerLinksElements"
+            [routerLink]="[link.url]"
+            routerLinkActive="link--active"
+            class="nav-link active text-white"
+        >{{ link.content | uppercase }}</a>
+    </div>
+</div>
